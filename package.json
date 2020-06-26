@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/halimyusuf/node-ls/issues"
   },
-  "homepage": "https://github.com/halimyusuf/node-ls"
+  "homepage": "https://github.com/halimyusuf/node-ls",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
 }
