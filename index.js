@@ -6,9 +6,11 @@ const lstat = util.promisify(fs.lstat);
 fs.readdir(process.cwd(), async (err, files) => {
   if (err) console.log(err);
   else {
-    for (let file of files) {
-      const stats = await lstat(file);
-      console.log(file, stats.isFile());
+    const statsPromise = files.map((file) => lstat(file));
+    const filesStats = await Promise.all(statsPromise);
+    for (let stat of filesStats) {
+      const i = filesStats.indexOf(stat);
+      console.log(files[i], stat.isFile());
     }
   }
 });
